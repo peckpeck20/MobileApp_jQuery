@@ -12,7 +12,7 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/index.css" />
   
-      <title>Mobiiliohjelmointi</title>
+      <title>Mobile App by Jose Zapata</title>
 </head>
 
 <body>  
@@ -61,6 +61,11 @@
     <div data-role="page" id="camPage" data-title="Camera">
   
         <div role="main" class="ui-content ui-body-a">
+
+            <button  class="ui-btn ui-icon-camera ui-btn-icon-top ui" id="cameraBt">Camera</button>
+            <div data-role="content" id="imgcontent" style="width: 350px; height: 450px;">
+                    <img id="camimage" style="display: block; width:95%;"/>
+            </div>
     
         </div> <!-- /content -->
         
@@ -113,10 +118,10 @@
     </div> <!-- /page -->
         
 
-<!--
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
--->
+    app.initialize();
     <script type="text/javascript">
 
         $(document).one("pagebeforecreate", function () {
@@ -283,13 +288,13 @@
                 $("#mapResult").text("Distance is " + data.rows[0].elements[0].distance.text);
 
                 $("#mapResult").append( "<br> estimated time is " + data.rows[0].elements[0].duration.text);
-                
-
-
-          })
-
+            })
         });
 
+        $("#cameraBt").click(function(){
+            console.log("camera clicked");
+            openCamera(); 
+        });
 
 
 
