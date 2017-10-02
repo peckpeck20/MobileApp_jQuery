@@ -60,6 +60,10 @@ function getLocation(){
     // current GPS coordinates
     //
     var onSuccess = function(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        alert(lat ,long);
+        /*
         alert('Latitude: '          + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +
               'Altitude: '          + position.coords.altitude          + '\n' +
@@ -68,6 +72,7 @@ function getLocation(){
               'Heading: '           + position.coords.heading           + '\n' +
               'Speed: '             + position.coords.speed             + '\n' +
               'Timestamp: '         + position.timestamp                + '\n');
+    */
     };
 
     // onError Callback receives a PositionError object
