@@ -55,7 +55,10 @@
     <div data-role="page" id="home" data-title="Home">
     
         <div role="main" class="ui-content ui-body-a">
-
+            <h1>Nearby Restaurants</h1>
+                <div id="restaurantDiv">
+                    
+                </div>
         </div> <!-- /content -->
     
     </div> <!-- /page -->
@@ -128,8 +131,11 @@
             <button  class="ui-btn ui-icon-search ui-btn-icon-top ui" id="locationBt" data-icon="search" >Get my location</button>
             <p id="locationPromt"></p>
             <div >
+                <p id="descriptionLat"></p>
+                <p id="descriptionLong"></p>
                 <p id="descriptionLoc"></p>
                 <p id="tempLoc"></p>
+                <img id="imgLoc"></img>
                 <p id="windLoc"></p>
                 <p id="humidityLoc"></p>
                 <p id="visibilityLoc"></p>
@@ -326,6 +332,7 @@
             console.log("location clicked");
             $("#locationPromt").text("Getting your location...");
            getLocation();
+           getWeather()
         });
 
 

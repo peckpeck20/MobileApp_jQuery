@@ -9,7 +9,7 @@ initialize: function() {
 // 'load', 'deviceready', 'offline', and 'online'.
 bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
-    //$("#locationTxt").text("Getting your location");
+
 },
 // device ready function
 // 
@@ -60,6 +60,7 @@ function getLocation(){
     // current GPS coordinates
     //
     var onSuccess = function(position) {
+<<<<<<< HEAD
         var lat = position.coords.latitude;
         var long = position.coords.longitude;
         alert(lat ,long);
@@ -73,6 +74,61 @@ function getLocation(){
               'Speed: '             + position.coords.speed             + '\n' +
               'Timestamp: '         + position.timestamp                + '\n');
     */
+=======
+        Latitude = position.coords.latitude;
+        Longitude = position.coords.longitude;
+
+        
+        //call the getWeather function using the coordinates
+        getWeather(Latitude,Longitude);
+        
+        // Get weather by using coordinates
+
+    function getWeather(latitude, longitude) {
+
+    // Get a free key at http://openweathermap.org/. Replace the "Your_Key_Here" string with that key.
+    var OpenWeatherAppKey = "6fd856e15815d47237dbd211075efced";
+
+    var queryString =
+      'http://api.openweathermap.org/data/2.5/weather?lat='
+      + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
+
+    $.getJSON(queryString, function (results) {
+
+        if (results.weather.length) {
+
+            $.getJSON(queryString, function (results) {
+
+                if (results.weather.length) {
+                    //for testing purposes
+                    console.log(queryString);
+                    //print results to DOM
+                    $("#locationPromt").empty();
+                    $('#descriptionLat').text("Latitude : " + Latitude);
+                    $('#descriptionLong').text("Longitude : " + Longitude);
+                    
+                    $('#descriptionLoc').text("Location : " + results.name);
+                    $('#tempLoc').text("Temperature : " + results.main.temp);
+                    $('#imgLoc').attr("src","http://openweathermap.org/img/w/" + results.weather[0].icon + ".png");
+                    $('#windLoc').text("Wind speed : " + results.wind.speed);
+                    $('#humidityLoc').text("Humidity : " +results.main.humidity);
+                    $('#visibilityLoc').text("Visilibity : " +results.weather[0].main);
+
+                    var sunriseDate = new Date(results.sys.sunrise);
+                    $('#sunriseLoc').text("Sunrise : " + sunriseDate.toLocaleTimeString());
+
+                    var sunsetDate = new Date(results.sys.sunrise);
+                    $('#sunsetLoc').text("Sunset : " +sunsetDate.toLocaleTimeString());
+                }
+
+            });
+        }
+    }).fail(function () {
+        console.log("error getting location");
+    });
+    }
+        
+>>>>>>> 7fa0273938efcd0ca1495964943d23bda7079c52
     };
 
     // onError Callback receives a PositionError object
