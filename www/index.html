@@ -26,6 +26,7 @@
             <li><a href="#weatherPage"  class="ui-btn">Weather</a></li>
             <li><a href="#distPage" class="ui-btn">Distance</a></li>
             <li><a href="#lunchPage" class="ui-btn">Lunch</a></li>
+            <li><a href="#locationPage" class="ui-btn">Location Weather</a></li>
         </ul>
     </div>
     
@@ -42,6 +43,7 @@
                 <li><a href="#weatherPage"  class="ui-btn ui-icon-calendar ui-btn-icon-top ui-mini">Weather</a></li>
                 <li><a href="#distPage" class="ui-btn ui-icon-gear ui-btn-icon-top ui-mini">Distance</a></li>
                 <li><a href="#lunchPage" class="ui-btn ui-icon-bullets ui-btn-icon-top ui-mini">Lunch</a></li>
+                <li><a href="#locationPage" class="ui-btn ui-icon-weather ui-btn-icon-top ui-mini">Location Weather</a></li>
             </ul>
         </div>
     </div>
@@ -79,7 +81,8 @@
             <p id="tempTxt"></p> 
             <p id="pressureTxt"></p>
             <p id="humidityTxt"></p>
-            <img id="weatherImg"></img>    
+            <img id="weatherImg"></img>
+                
 
         </div> <!-- /content -->
 
@@ -112,6 +115,27 @@
         <div role="main" class="ui-content ui-body-a">
             <h1>Lunch for Today: </h1>
             <div id="lunchTxt"></div>
+
+        </div> <!-- /content -->
+
+    </div> <!-- /page -->
+
+     <div data-role="page" id="locationPage" data-title="Location Page">
+
+  
+        <div role="main" class="ui-content ui-body-a">
+            <h1>Location based weather </h1>
+            <button  class="ui-btn ui-icon-search ui-btn-icon-top ui" id="locationBt" data-icon="search" >Get my location</button>
+            <p id="locationPromt"></p>
+            <div >
+                <p id="descriptionLoc"></p>
+                <p id="tempLoc"></p>
+                <p id="windLoc"></p>
+                <p id="humidityLoc"></p>
+                <p id="visibilityLoc"></p>
+                <p id="sunriseLoc"></p>
+                <p id="sunsetLoc"></p>
+            </div>
 
         </div> <!-- /content -->
 
@@ -291,12 +315,18 @@
                 $("#mapResult").append( "<br> estimated time is " + data.rows[0].elements[0].duration.text);
             })
         });
-
+        //camera button 
         $("#cameraBt").click(function(){
             console.log("camera clicked");
             openCamera(); 
         });
 
+        //location button
+        $('#locationBt').click(function(){
+            console.log("location clicked");
+            $("#locationPromt").text("Getting your location...");
+           getLocation();
+        });
 
 
 
