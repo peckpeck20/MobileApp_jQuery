@@ -63,7 +63,7 @@
         <div role="main" class="ui-content ui-body-a">
 
             <button  class="ui-btn ui-icon-camera ui-btn-icon-top ui" id="cameraBt">Camera</button>
-            <div data-role="content" id="imgcontent" style="width: 350px; height: 450px;">
+            <div data-role="content" id="imgcontent" style="width: 500px; height: 450px;">
                     <img id="camimage" style="display: block; width:95%;"/>
             </div>
     
@@ -111,7 +111,7 @@
   
         <div role="main" class="ui-content ui-body-a">
             <h1>Lunch for Today: </h1>
-            <p id="lunchTxt"></p>
+            <div id="lunchTxt"></div>
 
         </div> <!-- /content -->
 
@@ -236,7 +236,7 @@
         }
         function fetchWeather(){
             $.ajax({
-                url:"http://api.openweathermap.org/data/2.5/weather?id=658226&appid=6fd856e15815d47237dbd211075efced",
+                url:"http://api.openweathermap.org/data/2.5/weather?id=658226&appid=6fd856e15815d47237dbd211075efced&units=metric",
                 dataType: "json",
                 timeout: 5000
             })
@@ -264,10 +264,11 @@
                 var htmlTxt = "";
                 //loop though the array
                 for(var i = 0; i < lunchArray.length; i++){
-                    htmlTxt += lunchArray[i].Components ;
+                    htmlTxt += lunchArray[i].Components + "<br/> " ;
+
                 }
                 //get results from the variable to the DOM
-                    $("#lunchTxt").text(htmlTxt);
+                    $("#lunchTxt").html(htmlTxt);
                 })
         }
 

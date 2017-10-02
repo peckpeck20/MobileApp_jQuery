@@ -9,9 +9,10 @@ initialize: function() {
 // 'load', 'deviceready', 'offline', and 'online'.
 bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
+    $("#locationTxt").text("Getting your location");
 },
 // device ready function
-//
+// 
 // The scope of 'this' is the event. In order to call the 'receivedEvent'
 // function, we must explicity call 'app.receivedEvent(...);'
 onDeviceReady: function() {
@@ -46,4 +47,9 @@ function openCamera(){
         function onFail(message) {
             app.showAlert('Error taking picture', 'Error');
         }  
+}
+
+//get location 
+function getlocation(){
+    
 }
